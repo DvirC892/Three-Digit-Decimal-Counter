@@ -13,10 +13,8 @@ end divider;
 
 architecture RTL of divider is
 
-    constant DIV_SLOW_CYCLES : natural := 100;--100000000 / 10;    -- 10M
-    constant DIV_FAST_CYCLES : natural := 10;-- 100000000 / 1000;  -- 100k
-    constant DIV_SLOW_TB     : natural := 100; -- For simulation (500kHz)
-    constant DIV_FAST_TB     : natural := 10; -- For simulation (5MHz)
+    constant DIV_SLOW_CYCLES : natural := 10000000;
+    constant DIV_FAST_CYCLES : natural := 100000;
 
     signal count_5   : integer range 0 to 10000000 := 0;
     signal count_500 : integer range 0 to 100000 := 0;
@@ -28,7 +26,6 @@ architecture RTL of divider is
 
 begin
 
--- Detect reset rising edge
 process(clk_in)
 begin
     if rising_edge(clk_in) then
@@ -41,7 +38,6 @@ begin
     end if;
 end process;
 
--- Clock divider logic
 process(clk_in)
 begin
     if rising_edge(clk_in) then
