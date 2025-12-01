@@ -8,7 +8,8 @@ port (
     led_out : out std_logic;
     seg_out : out std_logic_vector (6 downto 0);
     anode_ctrl : out std_logic_vector (2 downto 0);
-    anode_enable : out std_logic
+    anode_enable : out std_logic;
+    leds : out std_logic_vector (3 downto 0)
 );
 end counter3_digits;
 
@@ -58,5 +59,6 @@ led_inst: entity work.LED(Behavioral)
 
 anode_ctrl <= shift_reg;
 anode_enable <= '1';
+leds <= count_limit;
 
 end Behavioral;
